@@ -111,19 +111,26 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
   const clients = createBinding(hyprland, "clients")
   const focusedWorkspace = createBinding(hyprland, "focusedWorkspace")
 
+  const [floatingChanged, setFloatingChanged] = createState(0)
+  const floatingId = hyprland.connect("floating", () => {
+    setFloatingChanged((prev) => prev + 1)
+  })
+
   const barClasses = createMemo(() => {
     const allClients = clients()
     focusedWorkspace()
+    floatingChanged()
 
     const hyprMonitor = hyprland.monitors.find((m) => m.name === gdkmonitor.connector)
     const activeWsId = hyprMonitor?.activeWorkspace?.id
 
-    const hasWindows = allClients.some((c) => c.workspace?.id === activeWsId)
+    const hasWindows = allClients.some((c) => c.workspace?.id === activeWsId && !c.floating)
 
     return hasWindows ? ["bar-content"] : ["bar-content", "no-windows"]
   })
 
   onCleanup(() => {
+    hyprland.disconnect(floatingId)
     win.destroy()
   })
 
