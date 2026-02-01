@@ -53,14 +53,12 @@ function Workspaces({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
     monitors.find((m) => m.name === gdkmonitor.connector)
   )
 
-  const getMonitorNumber = (connector: string) => {
-    const match = connector.match(/\d+/)
-    return match ? parseInt(match[0]) : 1
-  }
-
-  const monitorNum = getMonitorNumber(gdkmonitor.connector)
-  const workspaceStart = (monitorNum - 1) * 5 + 1
-  const workspaceIds = Array.from({ length: 5 }, (_, i) => workspaceStart + i)
+  const workspaceIds = createBinding(hyprland, "workspaces").as((workspaces) =>
+    workspaces
+      .filter((ws) => ws.monitor?.name === gdkmonitor.connector && ws.id > 0)
+      .map((ws) => ws.id)
+      .sort((a, b) => a - b)
+  )
 
   return (
     <With value={hyprMonitor}>
@@ -71,31 +69,33 @@ function Workspaces({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
 
         return (
           <box cssClasses={["workspaces"]} valign={Gtk.Align.CENTER} vexpand={false}>
-            {workspaceIds.map((id) => {
-              const wsClasses = createMemo(() => {
-                const ws = activeWorkspace()
-                const urgent = urgentWorkspaces()
-                const classes = ["workspace"]
-                if (ws?.id === id) classes.push("active")
-                if (urgent.has(id)) classes.push("urgent")
-                return classes
-              })
+            <For each={workspaceIds}>
+              {(id) => {
+                const wsClasses = createMemo(() => {
+                  const ws = activeWorkspace()
+                  const urgent = urgentWorkspaces()
+                  const classes = ["workspace"]
+                  if (ws?.id === id) classes.push("active")
+                  if (urgent.has(id)) classes.push("urgent")
+                  return classes
+                })
 
-              return (
-                <button
-                  cssClasses={wsClasses}
-                  onClicked={() => hyprland.dispatch("workspace", id.toString())}
-                >
-                  <box
-                    cssClasses={["workspace-indicator"]}
-                    valign={Gtk.Align.CENTER}
-                    halign={Gtk.Align.CENTER}
-                    vexpand={false}
-                    hexpand={false}
-                  />
-                </button>
-              )
-            })}
+                return (
+                  <button
+                    cssClasses={wsClasses}
+                    onClicked={() => hyprland.dispatch("workspace", id.toString())}
+                  >
+                    <box
+                      cssClasses={["workspace-indicator"]}
+                      valign={Gtk.Align.CENTER}
+                      halign={Gtk.Align.CENTER}
+                      vexpand={false}
+                      hexpand={false}
+                    />
+                  </button>
+                )
+              }}
+            </For>
           </box>
         )
       }}
