@@ -111,15 +111,18 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
   const clients = createBinding(hyprland, "clients")
   const focusedWorkspace = createBinding(hyprland, "focusedWorkspace")
 
-  const [floatingChanged, setFloatingChanged] = createState(0)
+  const [clientStateChanged, setClientStateChanged] = createState(0)
   const floatingId = hyprland.connect("floating", () => {
-    setFloatingChanged((prev) => prev + 1)
+    setClientStateChanged((prev) => prev + 1)
+  })
+  const clientMovedId = hyprland.connect("client-moved", () => {
+    setClientStateChanged((prev) => prev + 1)
   })
 
   const barClasses = createMemo(() => {
     const allClients = clients()
     focusedWorkspace()
-    floatingChanged()
+    clientStateChanged()
 
     const hyprMonitor = hyprland.monitors.find((m) => m.name === gdkmonitor.connector)
     const activeWsId = hyprMonitor?.activeWorkspace?.id
@@ -131,6 +134,7 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
 
   onCleanup(() => {
     hyprland.disconnect(floatingId)
+    hyprland.disconnect(clientMovedId)
     win.destroy()
   })
 
