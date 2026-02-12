@@ -1,7 +1,7 @@
 $text-color: #eee;
 
 $workspace-indicator-size: 9px;
-$workspace-indicator-size-active: 12px;
+$workspace-indicator-size-active: 13px;
 $workspace-indicator-color: $text-color;
 $workspace-indicator-opacity: 0.2;
 $workspace-indicator-opacity-hover: 0.3;
@@ -15,7 +15,7 @@ window.bar {
   background-color: transparent;
 
   .bar-content {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     transition: background-color 150ms ease-in-out;
   }
 
@@ -34,7 +34,7 @@ window.bar {
       background-color: inherit;
       border: none;
       padding: 0;
-      margin: 0px 5px 0px 5px;
+      margin: 0px 4px 0px 4px;
       transition: 150ms ease-in-out;
 
       .workspace-indicator {
@@ -50,7 +50,6 @@ window.bar {
 
       &.active {
         background-color: rgba($workspace-indicator-color, $workspace-indicator-opacity-active);
-        min-width: calc($workspace-indicator-size-active * 2);
       }
 
       &.urgent .workspace-indicator {
