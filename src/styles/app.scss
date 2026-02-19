@@ -73,9 +73,144 @@ window.bar {
     }
   }
 
+  button.clock-button {
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 6px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
   .clock {
     font-size: 15px;
     font-weight: 700;
     color: $text-color;
+  }
+
+  .notification-dot {
+    min-width: 7px;
+    min-height: 7px;
+    border-radius: 7px;
+    background-color: $text-color;
+  }
+
+  button.status-indicators {
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 10px;
+    color: $text-color;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+window.quick-settings {
+  background-color: transparent;
+
+  .qs-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 6px 10px 0 0;
+    min-width: 280px;
+    color: $text-color;
+
+    image {
+      color: $text-color;
+    }
+
+    label {
+      color: $text-color;
+    }
+  }
+
+  .qs-row {
+    padding: 8px 4px;
+
+    label {
+      font-size: 13px;
+    }
+
+    slider {
+      margin: 0;
+      padding: 0;
+
+      trough {
+        min-height: 6px;
+        border-radius: 3px;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      highlight {
+        border-radius: 3px;
+        background-color: $text-color;
+      }
+
+      slider {
+        min-width: 14px;
+        min-height: 14px;
+        border-radius: 7px;
+        background-color: $text-color;
+      }
+    }
+  }
+
+  .qs-separator {
+    min-height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 4px 0;
+  }
+}
+
+window.osd {
+  background-color: transparent;
+
+  .osd-container {
+    margin-bottom: 100px;
+  }
+
+  .osd-indicator {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 4px;
+    color: $text-color;
+
+    image {
+      color: $text-color;
+    }
+
+    levelbar trough {
+      min-height: 8px;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    levelbar block.filled {
+      border-radius: 4px;
+      background-color: $text-color;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      min-width: 45px;
+    }
+
+    &.muted {
+      image {
+        color: rgba($text-color, 0.5);
+      }
+
+      levelbar block.filled {
+        background-color: rgba($text-color, 0.5);
+      }
+    }
   }
 }

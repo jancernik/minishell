@@ -3,6 +3,7 @@ import { createBinding, For, This } from "ags"
 import app from "ags/gtk4/app"
 import style from "./styles/app.scss"
 import Bar from "./widgets/Bar"
+import OSD from "./widgets/OSD"
 
 app.start({
   css: style,
@@ -10,13 +11,12 @@ app.start({
     const monitors = createBinding(app, "monitors")
 
     return (
-      <For each={monitors}>
-        {(monitor) => (
-          <This this={app}>
-            <Bar gdkmonitor={monitor} />
-          </This>
-        )}
-      </For>
+      <This this={app}>
+        <For each={monitors}>
+          {(monitor) => <Bar gdkmonitor={monitor} />}
+        </For>
+        <OSD />
+      </This>
     )
   }
 })
