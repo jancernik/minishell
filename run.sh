@@ -2,7 +2,7 @@
 
 DIR="$(dirname "$(realpath "$0")")"
 
-cd "$DIR" && pnpm install
+cd "$DIR" && ~/.local/share/pnpm/pnpm install
 
  killall gjs
 
