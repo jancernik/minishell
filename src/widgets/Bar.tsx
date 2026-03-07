@@ -6,6 +6,8 @@ import AstalHyprland from "gi://AstalHyprland"
 import { createBinding, onCleanup, createMemo, createState } from "ags"
 import Clock from "./bar/Clock"
 import Workspaces from "./bar/Workspaces"
+import StatusIndicators from "./bar/StatusIndicators"
+import QuickSettings from "./QuickSettings"
 
 export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
   let win: Astal.Window
@@ -36,9 +38,16 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
     return hasWindows ? ["bar-content"] : ["bar-content", "no-windows"]
   })
 
+  const [qsVisible, setQsVisible] = createState(false)
+  const toggleQs = () => setQsVisible((prev) => !prev)
+  const closeQs = () => setQsVisible(false)
+
+  const qsWin = QuickSettings({ gdkmonitor, visible: qsVisible, onClose: closeQs })
+
   onCleanup(() => {
     hyprland.disconnect(floatingId)
     hyprland.disconnect(clientMovedId)
+    qsWin.destroy()
     win.destroy()
   })
 
@@ -61,6 +70,9 @@ export default function Bar({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
           </box>
           <box $type="center">
             <Clock />
+          </box>
+          <box $type="end">
+            <StatusIndicators onToggle={toggleQs} />
           </box>
         </centerbox>
       </box>
