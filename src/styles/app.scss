@@ -6,6 +6,7 @@ $workspace-indicator-color: $text-color;
 $workspace-indicator-opacity: 0.2;
 $workspace-indicator-opacity-hover: 0.3;
 $workspace-indicator-opacity-active: 1;
+$workspace-indicator-urgent-color: #df9540;
 
 * {
   font-family: "Noto Nerd Font Propo";
@@ -53,13 +54,15 @@ window.bar {
       }
 
       &.urgent .workspace-indicator {
-        background-color: rgba($workspace-indicator-color, $workspace-indicator-opacity-active);
+        background-color: rgba(
+          $workspace-indicator-urgent-color,
+          $workspace-indicator-opacity-active
+        );
         animation: pulse 1s ease-in-out infinite;
         transition: none;
       }
 
       @keyframes pulse {
-
         0%,
         100% {
           opacity: $workspace-indicator-opacity;
@@ -69,7 +72,6 @@ window.bar {
           opacity: 1;
         }
       }
-
     }
   }
 
@@ -77,5 +79,59 @@ window.bar {
     font-size: 15px;
     font-weight: 700;
     color: $text-color;
+  }
+}
+
+window.osd {
+  background-color: transparent;
+
+  .osd-indicator {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 0px 14px;
+    min-height: 48px;
+    color: $text-color;
+
+    image {
+      color: $text-color;
+      min-width: 28px;
+    }
+
+    label {
+      font-family: "JetBrains Mono";
+      font-feature-settings: "zero" 0;
+    }
+    levelbar {
+      min-height: 5px;
+
+      trough {
+        min-height: 5px;
+        border-radius: 2.5px;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 0;
+      }
+
+      block {
+        min-height: 5px;
+        border-radius: 2.5px;
+        border: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      block.filled {
+        background-color: $text-color;
+      }
+
+      block.empty {
+        background-color: transparent;
+      }
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+      min-width: 28px;
+    }
   }
 }
