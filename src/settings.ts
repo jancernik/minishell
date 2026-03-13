@@ -1,4 +1,3 @@
-// @ts-nocheck
 import GLib from "gi://GLib"
 import Gio from "gi://Gio"
 import { createState } from "ags"
@@ -21,7 +20,7 @@ function parseToml(text: string): Record<string, unknown> {
     const equal = trimmedLine.indexOf("=")
     if (equal === -1) continue
     const key = trimmedLine.slice(0, equal).trim()
-    const val = trimmedLine.slice(equal + 1).trim()
+    const value = trimmedLine.slice(equal + 1).trim()
     if (value === "true") result[key] = true
     else if (value === "false") result[key] = false
     else if (/^-?\d+$/.test(value)) result[key] = parseInt(value)
@@ -65,7 +64,7 @@ function write(s: Settings) {
     null,
     false,
     Gio.FileCreateFlags.REPLACE_DESTINATION,
-    null,
+    null
   )
 }
 
