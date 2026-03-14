@@ -9,7 +9,7 @@ export type Settings = {
 const CONFIG_FILE = `${GLib.get_user_config_dir()}/minishell/settings.toml`
 
 const defaults: Settings = {
-  useCustomIcons: true,
+  useCustomIcons: true
 }
 
 function parseToml(text: string): Record<string, unknown> {

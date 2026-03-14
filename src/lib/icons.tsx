@@ -73,7 +73,11 @@ export function Icon({
   return (
     <box>
       <image visible={showCustom} file={filePath} pixelSize={pxSize} />
-      <image visible={createMemo(() => !showCustom())} iconName={createMemo(getName)} pixelSize={pxSize} />
+      <image
+        visible={createMemo(() => !showCustom())}
+        iconName={createMemo(getName)}
+        pixelSize={pxSize}
+      />
     </box>
   )
 }

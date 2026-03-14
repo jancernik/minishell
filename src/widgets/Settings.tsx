@@ -1,4 +1,3 @@
-// @ts-nocheck
 import Gtk from "gi://Gtk?version=4.0"
 import { settings, setSetting } from "../settings"
 

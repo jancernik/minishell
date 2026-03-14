@@ -1,4 +1,3 @@
-// @ts-nocheck
 import GLib from "gi://GLib"
 import { createPoll } from "ags/time"
 

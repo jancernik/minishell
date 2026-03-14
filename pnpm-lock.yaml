@@ -11,6 +11,9 @@ importers:
       ags:
         specifier: file:/usr/share/ags/js
         version: file:../../../usr/share/ags/js(gnim@1.9.0)
+      prettier:
+        specifier: ^3.8.1
+        version: 3.8.1
 
 packages:
 
@@ -25,6 +28,11 @@ packages:
     resolution: {integrity: sha512-ubtl+BkcHFYImLQN/dg7XtM6VpOMZy1KlXOF+W/QlBVFG+c07lf+hC+bAkPqkyLwL1YUEIoLtk7iXlIuhbOYPA==}
     engines: {gjs: '>=1.79.0'}
 
+  prettier@3.8.1:
+    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
+    engines: {node: '>=14'}
+    hasBin: true
+
 snapshots:
 
   ags@file:../../../usr/share/ags/js(gnim@1.9.0):
@@ -32,3 +40,5 @@ snapshots:
       gnim: 1.9.0
 
   gnim@1.9.0: {}
+
+  prettier@3.8.1: {}

@@ -1,10 +1,12 @@
 {
   "scripts": {
     "start": "ags run . --gtk 4",
+    "format": "prettier --config ./.prettierrc.json --write .",
     "dev": "./dev.sh"
   },
   "dependencies": {
-    "ags": "file:/usr/share/ags/js"
+    "ags": "file:/usr/share/ags/js",
+    "prettier": "^3.8.1"
   },
   "prettier": {
     "semi": false,

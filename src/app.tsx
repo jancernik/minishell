@@ -1,10 +1,9 @@
-// @ts-nocheck
 import { createBinding, For, This } from "ags"
 import app from "ags/gtk4/app"
 import style from "./styles/app.scss"
 import Bar from "./widgets/Bar"
 import OSD from "./widgets/OSD"
-import {settingsWindow, toggleSettings } from "./widgets/Settings"
+import { settingsWindow, toggleSettings } from "./widgets/Settings"
 
 app.start({
   css: style,

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import Astal from "gi://Astal?version=4.0"
 import Gio from "gi://Gio"
 import GLib from "gi://GLib"
@@ -8,7 +7,6 @@ import AstalHyprland from "gi://AstalHyprland"
 import app from "ags/gtk4/app"
 import { createBinding, onCleanup, createState, createMemo, With } from "ags"
 import { Icon } from "../lib/icons"
-import GLib from "gi://GLib"
 
 const STATE_HOME = GLib.getenv("XDG_STATE_HOME") || `${GLib.get_home_dir()}/.local/state`
 const BRIGHTNESS_CURRENT = `${STATE_HOME}/brightness.current`
@@ -200,15 +198,15 @@ function BrightnessIndicator({ showOsd }: { showOsd: () => void }) {
 }
 
 export default function OSD() {
-  let win: Astal.Window
+  let win: Astal.Window | undefined
   const hyprland = AstalHyprland.get_default()
   const { BOTTOM } = Astal.WindowAnchor
 
   type OsdType = "speaker" | "microphone" | "brightness"
 
   const [active, setActive] = createState<OsdType | null>(null)
-  let timeoutId: number | null = null
-  let switchTimeoutId: number | null = null
+  let timeoutId: ReturnType<typeof setTimeout> | null = null
+  let switchTimeoutId: ReturnType<typeof setTimeout> | null = null
 
   const show = (type: OsdType) => {
     if (timeoutId) {
