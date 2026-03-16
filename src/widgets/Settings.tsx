@@ -22,6 +22,35 @@ export const settingsWindow: Gtk.Window = (
           }
         />
       </box>
+      <box cssClasses={["settings-row"]} spacing={12}>
+        <label label="Bar icon size" hexpand xalign={0} />
+        <Gtk.SpinButton
+          $={(self) => {
+            self.set_range(10, 32)
+            self.set_increments(1, 2)
+            self.set_value(settings().barIconSize)
+            self.connect("value-changed", () => setSetting("barIconSize", self.value))
+          }}
+        />
+      </box>
+      <label cssClasses={["settings-title"]} label="Status indicators" xalign={0} />
+      {(
+        [
+          ["Battery", "showBattery"],
+          ["Bluetooth", "showBluetooth"],
+          ["Speaker", "showSpeaker"],
+          ["Microphone", "showMicrophone"],
+          ["Network", "showNetwork"]
+        ] as const
+      ).map(([label, key]) => (
+        <box cssClasses={["settings-row"]} spacing={12}>
+          <label label={label} hexpand xalign={0} />
+          <switch
+            active={settings()[key]}
+            $={(self) => self.connect("notify::active", () => setSetting(key, self.active))}
+          />
+        </box>
+      ))}
     </box>
   </Gtk.Window>
 ) as Gtk.Window

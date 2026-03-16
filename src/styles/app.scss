@@ -136,3 +136,23 @@ window.osd {
     }
   }
 }
+
+.settings-container,
+.debug-container {
+  background-color: #1e1e1e;
+  color: $text-color;
+  padding: 16px;
+  min-width: 260px;
+}
+
+.settings-title,
+.debug-title {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+.settings-row,
+.debug-row {
+  font-size: 14px;
+}
