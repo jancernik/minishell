@@ -1,0 +1,1682 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Minishell settings",
+  "description": "Runtime configuration for minishell.",
+  "type": "object",
+  "required": ["version"],
+  "additionalProperties": true,
+  "x-config-version": 1,
+  "x-ui": {
+    "pages": [
+      {
+        "id": "appearance",
+        "title": "Appearance",
+        "icon": "palette",
+        "sections": [
+          {
+            "id": "colors",
+            "title": "Colors",
+            "layout": "swatches"
+          },
+          {
+            "id": "wash",
+            "title": "Card backgrounds",
+            "layout": "wash"
+          },
+          {
+            "id": "typography",
+            "title": "Typography"
+          },
+          {
+            "id": "controls",
+            "title": "Controls"
+          }
+        ]
+      },
+      {
+        "id": "bar",
+        "title": "Bar",
+        "icon": "dock",
+        "sections": [
+          {
+            "id": "background",
+            "title": "Background"
+          },
+          {
+            "id": "clock",
+            "title": "Clock"
+          },
+          {
+            "id": "status",
+            "title": "Status icons"
+          }
+        ]
+      },
+      {
+        "id": "workspaces",
+        "title": "Workspaces",
+        "icon": "workspaces",
+        "sections": [
+          {
+            "id": "indicator",
+            "title": "Indicator"
+          },
+          {
+            "id": "spacing",
+            "title": "Spacing"
+          }
+        ]
+      },
+      {
+        "id": "notifications",
+        "title": "Notifications",
+        "icon": "bell",
+        "sections": [
+          {
+            "id": "general",
+            "title": "General"
+          },
+          {
+            "id": "sound",
+            "title": "Sound"
+          },
+          {
+            "id": "popups",
+            "title": "Popups"
+          },
+          {
+            "id": "history",
+            "title": "History"
+          }
+        ]
+      },
+      {
+        "id": "surfaces",
+        "title": "Surfaces",
+        "icon": "corner",
+        "sections": [
+          {
+            "id": "corners",
+            "title": "Corners"
+          },
+          {
+            "id": "backdrop",
+            "title": "Modal backdrop"
+          }
+        ]
+      },
+      {
+        "id": "motion",
+        "title": "Motion",
+        "icon": "motion",
+        "sections": [
+          {
+            "id": "surfaces",
+            "title": "Surfaces"
+          },
+          {
+            "id": "workspaces",
+            "title": "Workspaces"
+          },
+          {
+            "id": "osd",
+            "title": "OSD"
+          }
+        ]
+      }
+    ]
+  },
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "default": 1,
+      "description": "Configuration format version.",
+      "x-ui": {
+        "hidden": true
+      }
+    },
+    "palette": {
+      "type": "object",
+      "title": "Palette",
+      "description": "Shared shell colors. The settings editor stays neutral so colors can always be repaired.",
+      "x-ui": {
+        "order": 10
+      },
+      "properties": {
+        "surface": {
+          "type": "string",
+          "format": "color",
+          "default": "#000000",
+          "title": "Liquid surface",
+          "description": "Single solid fill for the liquid field and bar.",
+          "x-ui": {
+            "order": 10,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Surfaces",
+            "keywords": "color palette"
+          }
+        },
+        "foreground": {
+          "type": "string",
+          "format": "color",
+          "default": "#f5f5f5",
+          "title": "Foreground",
+          "description": "Primary text and active workspace color.",
+          "x-ui": {
+            "order": 20,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Text",
+            "keywords": "color palette"
+          }
+        },
+        "muted": {
+          "type": "string",
+          "format": "color",
+          "default": "#c5c5c5",
+          "title": "Secondary",
+          "x-ui": {
+            "order": 30,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Text",
+            "keywords": "color palette"
+          }
+        },
+        "quiet": {
+          "type": "string",
+          "format": "color",
+          "default": "#adadad",
+          "title": "Quiet",
+          "x-ui": {
+            "order": 40,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Text",
+            "keywords": "color palette"
+          }
+        },
+        "inverse": {
+          "type": "string",
+          "format": "color",
+          "default": "#080808",
+          "title": "Inverse",
+          "x-ui": {
+            "order": 50,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Text",
+            "keywords": "color palette"
+          }
+        },
+        "action": {
+          "type": "string",
+          "format": "color",
+          "default": "#f4f4f4",
+          "title": "Primary action",
+          "x-ui": {
+            "order": 60,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Accents",
+            "keywords": "color palette"
+          }
+        },
+        "focus": {
+          "type": "string",
+          "format": "color",
+          "default": "#ffffff",
+          "title": "Keyboard focus",
+          "x-ui": {
+            "order": 70,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Accents",
+            "keywords": "color palette"
+          }
+        },
+        "raised": {
+          "type": "string",
+          "format": "color",
+          "default": "#161616",
+          "title": "Raised control",
+          "x-ui": {
+            "order": 80,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Surfaces",
+            "keywords": "color palette"
+          }
+        },
+        "hover": {
+          "type": "string",
+          "format": "color",
+          "default": "#292929",
+          "title": "Hover and input",
+          "x-ui": {
+            "order": 90,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Surfaces",
+            "keywords": "color palette"
+          }
+        },
+        "line": {
+          "type": "string",
+          "format": "color",
+          "default": "#3e3e3e",
+          "title": "Divider",
+          "x-ui": {
+            "order": 100,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Surfaces",
+            "keywords": "color palette"
+          }
+        },
+        "rail": {
+          "type": "string",
+          "format": "color",
+          "default": "#666666",
+          "title": "Level rail",
+          "x-ui": {
+            "order": 110,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Surfaces",
+            "keywords": "color palette"
+          }
+        },
+        "danger": {
+          "type": "string",
+          "format": "color",
+          "default": "#ffaaa5",
+          "title": "Danger text",
+          "x-ui": {
+            "order": 120,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Danger",
+            "keywords": "color palette"
+          }
+        },
+        "dangerFill": {
+          "type": "string",
+          "format": "color",
+          "default": "#322020",
+          "title": "Danger fill",
+          "x-ui": {
+            "order": 130,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Danger",
+            "keywords": "color palette"
+          }
+        },
+        "dangerHover": {
+          "type": "string",
+          "format": "color",
+          "default": "#492a2a",
+          "title": "Danger hover",
+          "x-ui": {
+            "order": 140,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Danger",
+            "keywords": "color palette"
+          }
+        },
+        "attention": {
+          "type": "string",
+          "format": "color",
+          "default": "#df9540",
+          "title": "Attention",
+          "x-ui": {
+            "order": 150,
+            "page": "appearance",
+            "section": "colors",
+            "group": "Accents",
+            "keywords": "color palette"
+          }
+        },
+        "corner": {
+          "type": "string",
+          "format": "color",
+          "default": "#000000",
+          "title": "Corner mask color",
+          "x-ui": {
+            "order": 160,
+            "page": "surfaces",
+            "section": "corners",
+            "keywords": "color"
+          }
+        },
+        "backdrop": {
+          "type": "string",
+          "format": "color",
+          "default": "#000000",
+          "title": "Color",
+          "x-ui": {
+            "order": 170,
+            "page": "surfaces",
+            "section": "backdrop",
+            "keywords": "color"
+          }
+        },
+        "wash": {
+          "type": "object",
+          "properties": {
+            "gradientEnabled": {
+              "type": "boolean",
+              "default": true,
+              "title": "Gradients",
+              "description": "Fill each wash state with its gradient. Off, each state uses its solid start color.",
+              "x-ui": {
+                "order": 16,
+                "page": "appearance",
+                "section": "wash",
+                "keywords": "gradient wash row"
+              }
+            },
+            "restStart": {
+              "type": "string",
+              "format": "color",
+              "default": "#1d1d1d",
+              "title": "Rest start",
+              "x-ui": {
+                "order": 210,
+                "page": "appearance",
+                "section": "wash",
+                "keywords": "color gradient wash row card background"
+              }
+            },
+            "restEnd": {
+              "type": "string",
+              "format": "color",
+              "default": "#0d0d0d",
+              "title": "Rest end",
+              "x-ui": {
+                "order": 220,
+                "page": "appearance",
+                "section": "wash",
+                "keywords": "color gradient wash row card background"
+              }
+            },
+            "hoverStart": {
+              "type": "string",
+              "format": "color",
+              "default": "#282828",
+              "title": "Hover start",
+              "x-ui": {
+                "order": 230,
+                "page": "appearance",
+                "section": "wash",
+                "keywords": "color gradient wash row card background"
+              }
+            },
+            "hoverEnd": {
+              "type": "string",
+              "format": "color",
+              "default": "#111111",
+              "title": "Hover end",
+              "x-ui": {
+                "order": 240,
+                "page": "appearance",
+                "section": "wash",
+                "keywords": "color gradient wash row card background"
+              }
+            },
+            "selectedStart": {
+              "type": "string",
+              "format": "color",
+              "default": "#313131",
+              "title": "Selected start",
+              "x-ui": {
+                "order": 250,
+                "page": "appearance",
+                "section": "wash",
+                "keywords": "color gradient wash row card background"
+              }
+            },
+            "selectedEnd": {
+              "type": "string",
+              "format": "color",
+              "default": "#181818",
+              "title": "Selected end",
+              "x-ui": {
+                "order": 260,
+                "page": "appearance",
+                "section": "wash",
+                "keywords": "color gradient wash row card background"
+              }
+            }
+          }
+        },
+        "iconFontFamily": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": ".*\\S.*",
+          "default": "NotoSans Nerd Font Propo",
+          "title": "Icon font",
+          "description": "Active Nerd Font for shell icons; changes live without changing text typography.",
+          "x-ui": {
+            "order": 15,
+            "control": "font",
+            "page": "appearance",
+            "section": "typography",
+            "keywords": "nerd glyph"
+          }
+        }
+      }
+    },
+    "bar": {
+      "type": "object",
+      "title": "Bar",
+      "description": "Background treatment of the top bar.",
+      "x-ui": {
+        "order": 15
+      },
+      "properties": {
+        "solidBackground": {
+          "type": "boolean",
+          "default": true,
+          "title": "Solid background",
+          "description": "Fill and join the bar to the liquid field. Its top corners follow the display outline and its side-edge corners use the display radius. Drawers touching a solid bar attach at its bottom; with a transparent background, top drawers attach to the screen edge.",
+          "x-ui": {
+            "order": 10,
+            "page": "bar",
+            "section": "background"
+          }
+        }
+      }
+    },
+    "clock": {
+      "type": "object",
+      "title": "Clock",
+      "description": "Clock visibility, format, and size.",
+      "x-ui": {
+        "order": 20
+      },
+      "properties": {
+        "show": {
+          "type": "boolean",
+          "default": true,
+          "title": "Show clock",
+          "description": "Display the clock in the center of the bar.",
+          "x-ui": {
+            "order": 10,
+            "page": "bar",
+            "section": "clock",
+            "card": "clock",
+            "keywords": "time"
+          }
+        },
+        "format": {
+          "type": "string",
+          "enum": ["24-hour", "12-hour"],
+          "default": "24-hour",
+          "title": "Format",
+          "description": "Choose a 24-hour clock or a 12-hour clock with AM/PM.",
+          "x-ui": {
+            "order": 20,
+            "control": "enum",
+            "optionLabels": ["24 hour", "12 hour"],
+            "page": "bar",
+            "section": "clock",
+            "card": "clock",
+            "dependsOn": "clock.show",
+            "keywords": "time am pm"
+          }
+        },
+        "fontSize": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 28,
+          "default": 15,
+          "title": "Size",
+          "description": "Clock text size in logical pixels; the bar grows to keep it visible.",
+          "x-ui": {
+            "order": 40,
+            "step": 1,
+            "page": "bar",
+            "section": "clock",
+            "card": "clock",
+            "dependsOn": "clock.show",
+            "unit": "px",
+            "keywords": "font"
+          }
+        },
+        "fontWeight": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 900,
+          "default": 700,
+          "title": "Weight",
+          "description": "Clock font weight from thin to black.",
+          "x-ui": {
+            "order": 50,
+            "step": 100,
+            "page": "bar",
+            "section": "clock",
+            "card": "clock",
+            "dependsOn": "clock.show",
+            "keywords": "font bold"
+          }
+        }
+      }
+    },
+    "indicators": {
+      "type": "object",
+      "title": "Indicators",
+      "description": "System status icons on the right side of the bar.",
+      "x-ui": {
+        "order": 25
+      },
+      "properties": {
+        "bluetooth": {
+          "type": "boolean",
+          "default": true,
+          "title": "Bluetooth",
+          "description": "Show the Bluetooth adapter status icon.",
+          "x-ui": {
+            "order": 10,
+            "page": "bar",
+            "section": "status"
+          }
+        },
+        "network": {
+          "type": "boolean",
+          "default": true,
+          "title": "Network",
+          "description": "Show the Wi-Fi or wired network status icon.",
+          "x-ui": {
+            "order": 20,
+            "page": "bar",
+            "section": "status",
+            "keywords": "wifi wired"
+          }
+        },
+        "volume": {
+          "type": "boolean",
+          "default": true,
+          "title": "Volume output",
+          "description": "Show the default sink volume icon.",
+          "x-ui": {
+            "order": 30,
+            "page": "bar",
+            "section": "status",
+            "card": "volume",
+            "keywords": "sound audio speaker"
+          }
+        },
+        "microphone": {
+          "type": "boolean",
+          "default": false,
+          "title": "Microphone",
+          "description": "Show the default source volume icon.",
+          "x-ui": {
+            "order": 40,
+            "page": "bar",
+            "section": "status",
+            "card": "volume",
+            "keywords": "volume input audio"
+          }
+        },
+        "volumePercentage": {
+          "type": "boolean",
+          "default": false,
+          "title": "Show percentage",
+          "description": "Show the volume percentage next to the volume icons. The OSD shows it whenever the volume changes.",
+          "x-ui": {
+            "order": 50,
+            "page": "bar",
+            "section": "status",
+            "card": "volume",
+            "dependsOn": ["indicators.volume", "indicators.microphone"],
+            "keywords": "volume"
+          }
+        },
+        "percentageOnHover": {
+          "type": "boolean",
+          "default": true,
+          "title": "Show percentage on hover",
+          "description": "Reveal a hidden volume or battery percentage when the pointer rests on its icon.",
+          "x-ui": {
+            "order": 95,
+            "page": "bar",
+            "section": "status",
+            "keywords": "volume battery number pointer"
+          }
+        }
+      }
+    },
+    "battery": {
+      "type": "object",
+      "title": "Battery",
+      "description": "Battery status on the right side of the bar.",
+      "x-ui": {
+        "order": 26
+      },
+      "properties": {
+        "show": {
+          "type": "boolean",
+          "default": true,
+          "title": "Battery",
+          "description": "Show the battery icon. Hidden automatically on systems without a battery.",
+          "x-ui": {
+            "order": 60,
+            "page": "bar",
+            "section": "status",
+            "card": "battery"
+          }
+        },
+        "percentage": {
+          "type": "string",
+          "enum": ["low", "always", "never"],
+          "default": "low",
+          "title": "Show percentage",
+          "description": "Show the battery percentage next to the icon always, never, or only while the battery is low and discharging.",
+          "x-ui": {
+            "order": 70,
+            "control": "enum",
+            "optionLabels": ["When low", "Always", "Never"],
+            "page": "bar",
+            "section": "status",
+            "card": "battery",
+            "dependsOn": "battery.show",
+            "keywords": "battery number"
+          }
+        },
+        "lowThreshold": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 50,
+          "default": 20,
+          "title": "Low battery level",
+          "description": "A discharging battery at or below this level counts as low.",
+          "x-ui": {
+            "order": 80,
+            "step": 1,
+            "unit": "%",
+            "page": "bar",
+            "section": "status",
+            "card": "battery",
+            "dependsOn": "battery.show",
+            "keywords": "battery warning"
+          }
+        },
+        "lowHighlight": {
+          "type": "boolean",
+          "default": true,
+          "title": "Highlight when low",
+          "description": "Tint the battery icon and percentage with the attention color while the battery is low.",
+          "x-ui": {
+            "order": 90,
+            "page": "bar",
+            "section": "status",
+            "card": "battery",
+            "dependsOn": "battery.show",
+            "keywords": "battery warning color"
+          }
+        }
+      }
+    },
+    "workspaces": {
+      "type": "object",
+      "title": "Workspaces",
+      "description": "Workspace geometry, motion, and attention behavior.",
+      "x-ui": {
+        "order": 30
+      },
+      "properties": {
+        "dotSize": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 12,
+          "default": 9,
+          "title": "Dot size",
+          "description": "Diameter of inactive workspace dots.",
+          "x-ui": {
+            "order": 10,
+            "step": 1,
+            "page": "workspaces",
+            "section": "indicator",
+            "unit": "px"
+          }
+        },
+        "activeWidth": {
+          "type": "integer",
+          "minimum": 14,
+          "maximum": 48,
+          "default": 18,
+          "title": "Active width",
+          "description": "Width of the active workspace pill.",
+          "x-ui": {
+            "order": 20,
+            "step": 1,
+            "page": "workspaces",
+            "section": "indicator",
+            "unit": "px"
+          }
+        },
+        "gap": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16,
+          "default": 4,
+          "title": "Gap",
+          "description": "Space on each side of a workspace indicator.",
+          "x-ui": {
+            "order": 30,
+            "step": 1,
+            "page": "workspaces",
+            "section": "indicator",
+            "unit": "px"
+          }
+        },
+        "paddingX": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 48,
+          "default": 20,
+          "title": "Horizontal padding",
+          "description": "Space before and after the workspace row.",
+          "x-ui": {
+            "order": 40,
+            "step": 1,
+            "page": "workspaces",
+            "section": "spacing",
+            "unit": "px"
+          }
+        },
+        "paddingY": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20,
+          "default": 10,
+          "title": "Vertical padding",
+          "description": "Space above and below the workspace row; this also scales the bar height.",
+          "x-ui": {
+            "order": 50,
+            "step": 1,
+            "page": "workspaces",
+            "section": "spacing",
+            "unit": "px"
+          }
+        },
+        "transitionDuration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000,
+          "default": 150,
+          "title": "Switch",
+          "description": "Workspace movement duration in milliseconds.",
+          "x-ui": {
+            "order": 60,
+            "step": 10,
+            "page": "motion",
+            "section": "workspaces",
+            "unit": "ms",
+            "keywords": "animation duration speed"
+          }
+        },
+        "attentionPulseDuration": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 2000,
+          "default": 500,
+          "title": "Attention pulse",
+          "description": "Time in milliseconds for one fade direction of the attention pulse.",
+          "x-ui": {
+            "order": 70,
+            "step": 50,
+            "page": "motion",
+            "section": "workspaces",
+            "unit": "ms"
+          }
+        },
+        "inactiveOpacity": {
+          "type": "number",
+          "minimum": 0.05,
+          "maximum": 0.9,
+          "default": 0.2,
+          "title": "Inactive opacity",
+          "description": "Opacity of workspace dots that are not active.",
+          "x-ui": {
+            "order": 80,
+            "step": 0.05,
+            "decimals": 2,
+            "page": "workspaces",
+            "section": "indicator",
+            "unit": "%",
+            "displayScale": 100
+          }
+        }
+      }
+    },
+    "corners": {
+      "type": "object",
+      "title": "Screen corners",
+      "description": "The display's own corners.",
+      "x-ui": {
+        "order": 40
+      },
+      "properties": {
+        "radius": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 48,
+          "default": 15,
+          "title": "Screen corners",
+          "description": "Radius of the display's corners. The bar's corners against the side edges are drawn to match it, so they read as the same shape.",
+          "x-ui": {
+            "order": 10,
+            "step": 1,
+            "page": "surfaces",
+            "section": "corners",
+            "unit": "px"
+          }
+        }
+      }
+    },
+    "liquid": {
+      "type": "object",
+      "title": "Liquid",
+      "description": "The merged distance field every shell surface is drawn into.",
+      "x-ui": {
+        "order": 45
+      },
+      "properties": {
+        "surfaceRadius": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 64,
+          "default": 24,
+          "title": "Surface corners",
+          "description": "Corner radius of a surface's own free corners, the ones that touch nothing.",
+          "x-ui": {
+            "order": 25,
+            "step": 1,
+            "page": "surfaces",
+            "section": "corners",
+            "unit": "px"
+          }
+        },
+        "morphRadius": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 96,
+          "default": 32,
+          "title": "Contact radius",
+          "description": "Requested radius for surface-to-surface and screen-edge joins, and the distance at which they start merging. Screen-edge joins are capped by surface thickness.",
+          "x-ui": {
+            "order": 28,
+            "step": 1,
+            "page": "surfaces",
+            "section": "corners",
+            "unit": "px",
+            "keywords": "morph join fillet merge"
+          }
+        },
+        "motionDuration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000,
+          "default": 450,
+          "title": "Open and morph",
+          "description": "Default opening and morphing duration in milliseconds, or the spring's response time with spring motion on. Set to zero for immediate motion.",
+          "x-ui": {
+            "order": 40,
+            "step": 10,
+            "page": "motion",
+            "section": "surfaces",
+            "unit": "ms",
+            "keywords": "animation duration speed"
+          }
+        },
+        "spring": {
+          "type": "boolean",
+          "default": true,
+          "title": "Spring motion",
+          "description": "Move surfaces on a spring that keeps its speed when interrupted. Off, they follow a fixed curve.",
+          "x-ui": {
+            "order": 42,
+            "page": "motion",
+            "section": "surfaces"
+          }
+        },
+        "bounce": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.6,
+          "default": 0.2,
+          "title": "Bounce",
+          "description": "How far a spring overshoots and rebounds before settling.",
+          "x-ui": {
+            "order": 44,
+            "step": 0.05,
+            "decimals": 2,
+            "page": "motion",
+            "section": "surfaces",
+            "unit": "%",
+            "displayScale": 100,
+            "dependsOn": "liquid.spring"
+          }
+        },
+        "deform": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.4,
+          "default": 0.03,
+          "title": "Deformation",
+          "description": "How much a moving surface stretches along its travel before settling.",
+          "x-ui": {
+            "order": 50,
+            "step": 0.01,
+            "decimals": 2,
+            "page": "motion",
+            "section": "surfaces"
+          }
+        },
+        "deformContent": {
+          "type": "boolean",
+          "default": false,
+          "title": "Deform content",
+          "description": "Stretch and squash a moving surface's content along with it. Off, only the outline stretches, outward along the travel, and the content stays rigid.",
+          "x-ui": {
+            "order": 51,
+            "page": "motion",
+            "section": "surfaces"
+          }
+        },
+        "bulge": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 40,
+          "default": 14,
+          "title": "Bulge",
+          "description": "How far the leading and trailing faces of a moving surface bow outward.",
+          "x-ui": {
+            "order": 52,
+            "step": 1,
+            "page": "motion",
+            "section": "surfaces",
+            "unit": "px"
+          }
+        },
+        "neck": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2,
+          "default": 0.8,
+          "title": "Neck",
+          "description": "How much wider a moving surface's joins to the screen edge and other surfaces grow, as a share of the contact radius.",
+          "x-ui": {
+            "order": 54,
+            "step": 0.05,
+            "decimals": 2,
+            "page": "motion",
+            "section": "surfaces",
+            "unit": "%",
+            "displayScale": 100,
+            "keywords": "join fillet merge"
+          }
+        },
+        "contentTravel": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.6,
+          "title": "Content travel",
+          "description": "How much of a drawer's travel its content follows. Lower values keep the content nearer its place while the surface grows over it.",
+          "x-ui": {
+            "order": 56,
+            "step": 0.05,
+            "decimals": 2,
+            "page": "motion",
+            "section": "surfaces",
+            "unit": "%",
+            "displayScale": 100
+          }
+        },
+        "contentFade": {
+          "type": "boolean",
+          "default": true,
+          "title": "Content fade",
+          "description": "Fade and grow a surface's content in just after it starts opening, and fade it out first when it closes.",
+          "x-ui": {
+            "order": 57,
+            "page": "motion",
+            "section": "surfaces"
+          }
+        },
+        "contentScale": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.2,
+          "default": 0.05,
+          "title": "Content grow",
+          "description": "How much smaller content starts while fading in, as a share of its size.",
+          "x-ui": {
+            "order": 58,
+            "step": 0.01,
+            "decimals": 2,
+            "page": "motion",
+            "section": "surfaces",
+            "unit": "%",
+            "displayScale": 100,
+            "dependsOn": "liquid.contentFade"
+          }
+        },
+        "emergeWidth": {
+          "type": "number",
+          "minimum": 0.2,
+          "maximum": 1,
+          "default": 0.6,
+          "title": "Emerge width",
+          "description": "How wide a drawer is as it starts to come out of the edge, as a share of its full width. It widens to full size as it opens.",
+          "x-ui": {
+            "order": 59,
+            "step": 0.05,
+            "decimals": 2,
+            "page": "motion",
+            "section": "surfaces",
+            "unit": "%",
+            "displayScale": 100
+          }
+        },
+        "triggerEmergeWidth": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 1,
+          "default": 0.25,
+          "title": "Emerge width from a trigger",
+          "description": "How wide a drawer opened from a bar icon is as it starts to come out under that icon, as a share of its full width.",
+          "x-ui": {
+            "order": 61,
+            "step": 0.05,
+            "decimals": 2,
+            "page": "motion",
+            "section": "surfaces",
+            "unit": "%",
+            "displayScale": 100
+          }
+        },
+        "cornerEmerge": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "title": "Corner emerge",
+          "description": "How far a drawer in a screen corner, when not opened from a bar icon, starts inside the side edge as well, as a share of its emerging width, so it grows out of the corner.",
+          "x-ui": {
+            "order": 60,
+            "step": 0.05,
+            "decimals": 2,
+            "page": "motion",
+            "section": "surfaces",
+            "unit": "%",
+            "displayScale": 100
+          }
+        },
+        "stiffness": {
+          "type": "integer",
+          "minimum": 20,
+          "maximum": 600,
+          "default": 150,
+          "title": "Spring stiffness",
+          "description": "How hard a deformed surface is pulled back to its resting shape.",
+          "x-ui": {
+            "order": 62,
+            "step": 10,
+            "page": "motion",
+            "section": "surfaces"
+          }
+        },
+        "damping": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60,
+          "default": 30,
+          "title": "Spring damping",
+          "description": "How quickly the settling wobble dies out.",
+          "x-ui": {
+            "order": 70,
+            "step": 1,
+            "page": "motion",
+            "section": "surfaces"
+          }
+        },
+        "backdropOpacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.38,
+          "title": "Opacity",
+          "description": "Opacity of the dimmed backdrop behind modal drawers. At zero it is invisible but still catches outside clicks.",
+          "x-ui": {
+            "order": 91,
+            "step": 0.01,
+            "decimals": 2,
+            "page": "surfaces",
+            "section": "backdrop",
+            "unit": "%",
+            "displayScale": 100
+          }
+        },
+        "backdropBlur": {
+          "type": "boolean",
+          "default": false,
+          "title": "Blur",
+          "description": "Blur the screen behind modal drawers. The blurred view is a still capture, so content behind a modal freezes until it closes.",
+          "x-ui": {
+            "order": 92,
+            "page": "surfaces",
+            "section": "backdrop"
+          }
+        },
+        "backdropBlurRadius": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64,
+          "default": 32,
+          "title": "Blur radius",
+          "description": "How far the backdrop blur spreads, in logical pixels.",
+          "x-ui": {
+            "order": 93,
+            "step": 1,
+            "page": "surfaces",
+            "section": "backdrop",
+            "dependsOn": "liquid.backdropBlur",
+            "unit": "px"
+          }
+        },
+        "backdropCustomDuration": {
+          "type": "boolean",
+          "default": false,
+          "title": "Custom timing",
+          "description": "Animate the backdrop with its own duration. Off follows the modal drawer's opening animation.",
+          "x-ui": {
+            "order": 94,
+            "page": "surfaces",
+            "section": "backdrop"
+          }
+        },
+        "backdropDuration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000,
+          "default": 450,
+          "title": "Duration",
+          "description": "Backdrop dimming and blur duration in milliseconds. Set to zero for an immediate change.",
+          "x-ui": {
+            "order": 95,
+            "step": 10,
+            "page": "surfaces",
+            "section": "backdrop",
+            "dependsOn": "liquid.backdropCustomDuration",
+            "unit": "ms",
+            "keywords": "animation duration speed"
+          }
+        }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "title": "Interface",
+      "description": "Shared interface typography and control sizing.",
+      "x-ui": {
+        "order": 16
+      },
+      "properties": {
+        "fontFamily": {
+          "type": "string",
+          "default": "Noto Nerd Font Propo",
+          "minLength": 1,
+          "pattern": ".*\\S.*",
+          "title": "Text font",
+          "description": "Font family for shell and settings text.",
+          "x-ui": {
+            "order": 5,
+            "page": "appearance",
+            "section": "typography",
+            "control": "font",
+            "keywords": "typeface clock"
+          }
+        },
+        "radius": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 16,
+          "default": 8,
+          "title": "Corner radius",
+          "description": "Shared corner radius for buttons, fields, rows, cards, and menus. Smaller icon tiles and larger cards are derived from it.",
+          "x-ui": {
+            "order": 10,
+            "step": 1,
+            "page": "appearance",
+            "section": "controls",
+            "unit": "px",
+            "keywords": "round"
+          }
+        }
+      }
+    },
+    "osd": {
+      "type": "object",
+      "title": "OSD",
+      "description": "Visual behavior of passive on-screen readouts.",
+      "x-ui": {
+        "order": 17
+      },
+      "properties": {
+        "scrollDirection": {
+          "type": "string",
+          "enum": ["top-to-bottom", "bottom-to-top"],
+          "default": "bottom-to-top",
+          "title": "Message scroll",
+          "description": "Direction used when successive OSD messages belong to the same cycle group.",
+          "x-ui": {
+            "order": 10,
+            "optionLabels": ["Top to bottom", "Bottom to top"],
+            "page": "motion",
+            "section": "osd",
+            "keywords": "direction cycle"
+          }
+        }
+      }
+    },
+    "notifications": {
+      "type": "object",
+      "title": "Notifications",
+      "description": "Desktop notification popups and history.",
+      "x-ui": {
+        "order": 35
+      },
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "title": "Show notifications",
+          "description": "Run the shell's notification server. Turn it off to use another one, such as swaync or dunst; the shell then restarts to free it.",
+          "x-ui": {
+            "order": 10,
+            "page": "notifications",
+            "section": "general",
+            "keywords": "daemon server swaync dunst mako module"
+          }
+        },
+        "indicator": {
+          "type": "boolean",
+          "default": true,
+          "title": "Unseen indicator",
+          "description": "Show a bell beside the clock while there are notifications you have not seen in the center.",
+          "x-ui": {
+            "order": 20,
+            "page": "notifications",
+            "section": "general",
+            "dependsOn": "notifications.enabled",
+            "keywords": "badge unread bell clock"
+          }
+        },
+        "sound": {
+          "type": "string",
+          "enum": ["none", "message", "bell", "complete", "information", "file"],
+          "default": "message",
+          "title": "Sound",
+          "description": "Played for a new notification that names no sound of its own. File plays the sound file below.",
+          "x-ui": {
+            "order": 10,
+            "control": "enum",
+            "optionLabels": ["None", "Message", "Bell", "Complete", "Information", "File"],
+            "page": "notifications",
+            "section": "sound",
+            "dependsOn": "notifications.sounds",
+            "keywords": "audio alert chime"
+          }
+        },
+        "criticalSound": {
+          "type": "string",
+          "enum": ["same", "none", "message", "bell", "complete", "information", "warning", "file"],
+          "default": "warning",
+          "title": "Critical sound",
+          "description": "Played for a new critical notification that names no sound of its own.",
+          "x-ui": {
+            "order": 20,
+            "control": "enum",
+            "optionLabels": ["Same", "None", "Message", "Bell", "Complete", "Information", "Warning", "File"],
+            "page": "notifications",
+            "section": "sound",
+            "dependsOn": "notifications.sounds",
+            "keywords": "audio alert urgent"
+          }
+        },
+        "soundFile": {
+          "type": "string",
+          "default": "",
+          "title": "Sound file",
+          "description": "Path of the sound to play when a sound above is File.",
+          "x-ui": {
+            "order": 30,
+            "page": "notifications",
+            "section": "sound",
+            "dependsOn": "notifications.sounds",
+            "keywords": "audio path custom"
+          }
+        },
+        "normalTimeout": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60,
+          "default": 6,
+          "title": "Popup time",
+          "description": "Seconds a notification stays up when its app leaves the timing to the shell. Critical ones stay until dismissed.",
+          "x-ui": {
+            "order": 10,
+            "step": 1,
+            "page": "notifications",
+            "section": "popups",
+            "unit": "s",
+            "keywords": "timeout duration"
+          }
+        },
+        "lowTimeout": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60,
+          "default": 4,
+          "title": "Low priority popup time",
+          "description": "Seconds a low priority notification stays up when its app leaves the timing to the shell.",
+          "x-ui": {
+            "order": 20,
+            "step": 1,
+            "page": "notifications",
+            "section": "popups",
+            "unit": "s",
+            "keywords": "timeout duration urgency"
+          }
+        },
+        "maxPopups": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6,
+          "default": 3,
+          "title": "Popups at once",
+          "description": "The most notifications popped up together; older ones wait in the center.",
+          "x-ui": {
+            "order": 30,
+            "step": 1,
+            "page": "notifications",
+            "section": "popups",
+            "keywords": "stack count"
+          }
+        },
+        "sounds": {
+          "type": "boolean",
+          "default": true,
+          "title": "Play sounds",
+          "description": "Play notification sounds, the ones apps ask for and the ones above.",
+          "x-ui": {
+            "order": 5,
+            "page": "notifications",
+            "section": "sound",
+            "keywords": "audio sound mute"
+          }
+        },
+        "historyLimit": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500,
+          "default": 100,
+          "title": "Kept after restart",
+          "description": "How many notifications the center keeps across restarts.",
+          "x-ui": {
+            "order": 10,
+            "step": 10,
+            "page": "notifications",
+            "section": "history",
+            "keywords": "history persist count"
+          }
+        }
+      }
+    },
+    "debug": {
+      "type": "object",
+      "title": "Debug",
+      "description": "Mock system state and liquid lab parameters, edited in the debug panel of debug builds (MINISHELL_DEBUG=1).",
+      "x-ui": {
+        "order": 100,
+        "hidden": true
+      },
+      "properties": {
+        "mock": {
+          "type": "boolean",
+          "default": false,
+          "title": "Mock values",
+          "description": "Show mocked Bluetooth, network, volume, and battery values on the bar instead of live system state.",
+          "x-ui": {
+            "order": 10
+          }
+        },
+        "bt": {
+          "type": "string",
+          "enum": ["auto", "off", "idle", "discovering", "connected"],
+          "default": "auto",
+          "title": "Bluetooth",
+          "description": "Mocked Bluetooth adapter state, or live values with auto.",
+          "x-ui": {
+            "order": 20,
+            "optionLabels": ["Live", "Off", "Idle", "Discovering", "Connected"],
+            "dependsOn": "debug.mock"
+          }
+        },
+        "net": {
+          "type": "string",
+          "enum": ["auto", "wifi", "wired", "none", "off"],
+          "default": "auto",
+          "title": "Network",
+          "description": "Mocked network state, or live values with auto.",
+          "x-ui": {
+            "order": 30,
+            "optionLabels": ["Live", "Wi-Fi", "Wired", "Disconnected", "Wi-Fi off"],
+            "dependsOn": "debug.mock"
+          }
+        },
+        "netStrength": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 70,
+          "title": "Wi-Fi strength",
+          "description": "Mocked Wi-Fi signal strength in percent.",
+          "x-ui": {
+            "order": 40,
+            "step": 1,
+            "unit": "%",
+            "dependsOn": "debug.mock"
+          }
+        },
+        "volume": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 50,
+          "title": "Output volume",
+          "description": "Mocked default sink volume in percent.",
+          "x-ui": {
+            "order": 50,
+            "step": 1,
+            "unit": "%",
+            "dependsOn": "debug.mock"
+          }
+        },
+        "volumeMuted": {
+          "type": "boolean",
+          "default": false,
+          "title": "Mute output",
+          "description": "Mocked default sink mute state.",
+          "x-ui": {
+            "order": 60,
+            "dependsOn": "debug.mock"
+          }
+        },
+        "micVolume": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 80,
+          "title": "Input volume",
+          "description": "Mocked default source volume in percent.",
+          "x-ui": {
+            "order": 70,
+            "step": 1,
+            "unit": "%",
+            "dependsOn": "debug.mock"
+          }
+        },
+        "micMuted": {
+          "type": "boolean",
+          "default": false,
+          "title": "Mute input",
+          "description": "Mocked default source mute state.",
+          "x-ui": {
+            "order": 80,
+            "dependsOn": "debug.mock"
+          }
+        },
+        "batteryPresent": {
+          "type": "boolean",
+          "default": true,
+          "title": "Present",
+          "description": "Pretend a battery exists, even on machines without one.",
+          "x-ui": {
+            "order": 90,
+            "dependsOn": "debug.mock"
+          }
+        },
+        "batteryPercent": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 72,
+          "title": "Charge",
+          "description": "Mocked battery charge in percent.",
+          "x-ui": {
+            "order": 100,
+            "step": 1,
+            "unit": "%",
+            "dependsOn": "debug.mock"
+          }
+        },
+        "batteryCharging": {
+          "type": "boolean",
+          "default": false,
+          "title": "Charging",
+          "description": "Mocked battery charging state.",
+          "x-ui": {
+            "order": 110,
+            "dependsOn": "debug.mock"
+          }
+        },
+        "liquidModalDismiss": {
+          "type": "boolean",
+          "default": true,
+          "title": "Click away",
+          "description": "Close the modal preview when clicking its backdrop. Outside clicks are consumed in either mode.",
+          "x-ui": {
+            "order": 218
+          }
+        },
+        "liquidCard": {
+          "type": "boolean",
+          "default": false,
+          "title": "Show probe",
+          "description": "Show the draggable deformation and field-fusion probe.",
+          "x-ui": {
+            "order": 220
+          }
+        },
+        "liquidStress": {
+          "type": "boolean",
+          "default": false,
+          "title": "Show stress shapes",
+          "description": "Add test shapes to exercise active-shape compaction and the eight-shape warning.",
+          "x-ui": {
+            "order": 230
+          }
+        },
+        "liquidDrawerEdge": {
+          "type": "string",
+          "enum": ["top", "right", "bottom", "left"],
+          "default": "right",
+          "title": "Edge",
+          "description": "Display edge that the drawer slides from.",
+          "x-ui": {
+            "order": 240,
+            "optionLabels": ["Top", "Right", "Bottom", "Left"]
+          }
+        },
+        "liquidDrawerAlignment": {
+          "type": "string",
+          "enum": ["start", "center", "end"],
+          "default": "end",
+          "title": "Alignment",
+          "description": "Position along the selected edge. Start means left on horizontal edges and top on vertical edges; end means right or bottom.",
+          "x-ui": {
+            "order": 250,
+            "optionLabels": ["Start", "Center", "End"]
+          }
+        },
+        "liquidModalEdge": {
+          "type": "string",
+          "enum": ["top", "right", "bottom", "left"],
+          "default": "right",
+          "title": "Edge",
+          "description": "Display edge that the modal drawer stays attached to.",
+          "x-ui": {
+            "order": 245,
+            "optionLabels": ["Top", "Right", "Bottom", "Left"]
+          }
+        },
+        "liquidModalAlignment": {
+          "type": "string",
+          "enum": ["start", "center", "end"],
+          "default": "start",
+          "title": "Alignment",
+          "description": "Position along the selected display edge.",
+          "x-ui": {
+            "order": 255,
+            "optionLabels": ["Start", "Center", "End"]
+          }
+        },
+        "liquidCardPosition": {
+          "type": "string",
+          "enum": ["top-left", "top-center", "top-right", "left-center", "center", "right-center", "bottom-left", "bottom-center", "bottom-right"],
+          "default": "bottom-center",
+          "title": "Position",
+          "description": "Initial screen position of the draggable deformation probe.",
+          "x-ui": {
+            "order": 260,
+            "optionLabels": ["Top left", "Top center", "Top right", "Left center", "Center", "Right center", "Bottom left", "Bottom center", "Bottom right"],
+            "dependsOn": "debug.liquidCard"
+          }
+        },
+        "liquidStressCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 8,
+          "title": "Shapes",
+          "description": "Number of extra painted shapes used to verify the eight-shape shader capacity and warning behavior.",
+          "x-ui": {
+            "order": 270,
+            "step": 1,
+            "dependsOn": "debug.liquidStress"
+          }
+        }
+      }
+    }
+  }
+}

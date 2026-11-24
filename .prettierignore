@@ -1,7 +1,0 @@
-pnpm-lock.yaml
-.pnpm-store/
-node_modules/
-@girs/
-contrib/
-icons/
-tsconfig.json

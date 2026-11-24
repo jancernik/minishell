@@ -1,2 +1,6 @@
-node_modules
-@girs
+*.qmlc
+*.jsc
+.qmlls.ini
+.stfolder
+__pycache__/
+pi-session-*.html
