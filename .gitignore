@@ -1,0 +1,6 @@
+*.qmlc
+*.jsc
+.qmlls.ini
+.stfolder
+__pycache__/
+pi-session-*.html
